@@ -19,7 +19,7 @@ module "appservice" {
 
 module "staticsite" {
   source  = "app.terraform.io/HelloWorldInc/staticsite/azurerm"
-  version = "0.0.1"
+  version = "0.0.2"
  
   rsrc_location = "East US 2"
   rsrc_name     = "ststwebsprd01"
