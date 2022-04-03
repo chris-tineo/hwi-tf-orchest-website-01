@@ -8,10 +8,11 @@ module "resourcegroup" {
 
 module "appservice" {
   source  = "app.terraform.io/HelloWorldInc/appservice/azurerm"
-  version = "0.0.1"
+  version = "0.0.2"
   
   rsrc_location = "aps"
   rsrc_name     = "apswebsprd01"
   rsrc_rg       =  module.resourcegroup.rg_name
   rsrc_sku      =  "F1"
+  rsrc_os_type  = "Linux"
 }
