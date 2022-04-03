@@ -10,7 +10,7 @@ module "appservice" {
   source  = "app.terraform.io/HelloWorldInc/appservice/azurerm"
   version = "0.0.2"
   
-  rsrc_location = "aps"
+  rsrc_location = "East US 2"
   rsrc_name     = "apswebsprd01"
   rsrc_rg       =  module.resourcegroup.rg_name
   rsrc_sku      =  "F1"
