@@ -12,6 +12,6 @@ module "appservice" {
   
   rsrc_location = "aps"
   rsrc_name     = "apswebsprd01"
-  rsrc_rg       =  module.resourcegroup.name
+  rsrc_rg       =  module.resourcegroup.rg_name
   rsrc_sku      =  "F1"
 }
