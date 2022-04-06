@@ -2,7 +2,7 @@ module "resourcegroup" {
   source  = "app.terraform.io/HelloWorldInc/resourcegroup/azurerm"
   version = "0.0.1"
   
-  rsrc_name     = "RGWEBSITE01PROD"
+  rsrc_name     = "RGWEBSITE01DEV"
   rsrc_location = "East US 2" 
 }
 
@@ -11,7 +11,7 @@ module "staticsite" {
   version = "0.0.3"
  
   rsrc_location   = "East US 2"
-  rsrc_name       = "ststwebsprd01"
+  rsrc_name       = "ststwebsdev01"
   rsrc_rg         =  module.resourcegroup.rg_name
   rsrc_skugeneral = "Standard"
 }
@@ -19,7 +19,7 @@ module "staticsite" {
 #######Resources needed to Alert Static Site using Azure Monitor
   
 resource "azurerm_log_analytics_workspace" "loganalytics" {
-  name                = "lganwebsprd01"
+  name                = "lganwebsdev01"
   location            = "East US 2"
   resource_group_name = module.resourcegroup.rg_name
   sku                 = "PerGB2018"
@@ -27,7 +27,7 @@ resource "azurerm_log_analytics_workspace" "loganalytics" {
 }
   
 resource "azurerm_application_insights" "appinsights" {
-  name                = "apinwebsprd01"
+  name                = "apinwebsdev01"
   location            = "East US 2"
   resource_group_name = module.resourcegroup.rg_name
   workspace_id        = azurerm_log_analytics_workspace.loganalytics.id
@@ -35,7 +35,7 @@ resource "azurerm_application_insights" "appinsights" {
 }
   
 resource "azurerm_application_insights_web_test" "webtest" {
-  name                    = "webtest-static-web-prod"
+  name                    = "webtest-static-web-dev"
   location                = "East US 2"
   resource_group_name     = module.resourcegroup.rg_name
   application_insights_id = azurerm_application_insights.appinsights.id
@@ -61,7 +61,7 @@ XML
 }  
   
 resource "azurerm_monitor_metric_alert" "metricalert" {
-  name                = "Alert Static Web App Prod"
+  name                = "Alert Static Web App Dev"
   resource_group_name = module.resourcegroup.rg_name
   scopes              = [azurerm_application_insights_web_test.webtest.id, azurerm_application_insights.appinsights.id]
   description         = "Action will be triggered when Static Web App is down"
@@ -78,9 +78,9 @@ resource "azurerm_monitor_metric_alert" "metricalert" {
 }  
 
 resource "azurerm_monitor_action_group" "actiongroup" {
-  name                = "actiongroupOpsTeams"
+  name                = "actiongroupOpsTeamsDev"
   resource_group_name = module.resourcegroup.rg_name
-  short_name          = "OpsTeams"
+  short_name          = "OpsTeamsDev"
 
   email_receiver {
     name          = "SendToOpsTeam"
