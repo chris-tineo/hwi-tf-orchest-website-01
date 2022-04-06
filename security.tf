@@ -8,21 +8,39 @@ resource "azurerm_key_vault" "keyvault01" {
   purge_protection_enabled    = false
 
   sku_name = "standard"
-    
+ 
+  ##Service Principal permissions
   access_policy {
     tenant_id = data.azurerm_client_config.current.tenant_id
     object_id = "0f6a62ba-a500-46d5-b1fc-a3a918fbfc3c"
 
     key_permissions = [
-      "Get",
+      "*",
     ]
 
     secret_permissions = [
-      "Get",
+      "*",
     ]
 
     storage_permissions = [
-      "Get",
+      "*",
     ]
-  }
+  } 
+  ##Ctineo user permissions
+  access_policy {
+    tenant_id = data.azurerm_client_config.current.tenant_id
+    object_id = "4f6d35d3-98d3-4a7f-a293-885728cd1b03"
+
+    key_permissions = [
+      "*",
+    ]
+
+    secret_permissions = [
+      "*",
+    ]
+
+    storage_permissions = [
+      "*",
+    ]
+  }  
 }
