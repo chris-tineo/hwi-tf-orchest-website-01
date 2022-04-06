@@ -58,7 +58,7 @@ XML
 resource "azurerm_monitor_metric_alert" "metricalert" {
   name                = "Alert Static Web App Prod"
   resource_group_name = module.resourcegroup.rg_name
-  scopes              = [azurerm_application_insights_web_test.webtest.id]
+  scopes              = [azurerm_application_insights_web_test.webtest.id, azurerm_application_insights.appinsights.id]
   description         = "Action will be triggered when Static Web App is down"
     
   application_insights_web_test_location_availability_criteria {
