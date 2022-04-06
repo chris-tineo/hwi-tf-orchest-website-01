@@ -18,10 +18,18 @@ module "staticsite" {
   
 #######Resources needed to Alert Static Site using Azure Monitor
   
-resource "azurerm_application_insights" "example" {
-  name                = "tf-test-appinsights"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
-  workspace_id        = azurerm_log_analytics_workspace.example.id
+resource "azurerm_log_analytics_workspace" "loganalytics" {
+  name                = "lganwebsprd01"
+  location            = "East US 2"
+  resource_group_name = module.resourcegroup.rg_name
+  sku                 = "PerGB2018"
+  retention_in_days   = 30
+}
+  
+resource "azurerm_application_insights" "appinsights" {
+  name                = "apinwebsprd01"
+  location            = "East US 2"
+  resource_group_name = module.resourcegroup.rg_name
+  workspace_id        = azurerm_log_analytics_workspace.loganalytics.id
   application_type    = "web"
 }
