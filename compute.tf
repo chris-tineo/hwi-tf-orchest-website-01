@@ -34,7 +34,7 @@ resource "azurerm_application_insights" "appinsights" {
   application_type    = "web"
 }
   
-resource "azurerm_application_insights_web_test" "example" {
+resource "azurerm_application_insights_web_test" "webtest" {
   name                    = "webtest-static-web-prod"
   location                = "East US 2"
   resource_group_name     = module.resourcegroup.rg_name
