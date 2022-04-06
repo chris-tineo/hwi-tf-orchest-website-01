@@ -20,7 +20,7 @@ resource "azurerm_key_vault_access_policy" "srvprinc_permissions" {
   ]
 
   secret_permissions = [
-    "Get", "Delete", "Set"
+    "Get", "Delete", "Set", "List", "Purge", "Recover", "Restore"
   ]
 }    
     
@@ -40,7 +40,7 @@ resource "azurerm_key_vault_access_policy" "ctineo_permissions" {
     azurerm_key_vault_access_policy.srvprinc_permissions,
   ]
 }
-
+/*
 resource "azurerm_key_vault_secret" "github_token" {
   name         = "githubtoken"
   value        = var.github_token
@@ -50,3 +50,4 @@ resource "azurerm_key_vault_secret" "github_token" {
     azurerm_key_vault_access_policy.srvprinc_permissions,
   ]
 }
+*/
