@@ -66,21 +66,19 @@ resource "azurerm_monitor_metric_alert" "metricalert" {
     component_id          = azurerm_application_insights.appinsights.id
     failed_location_count = "2"
   }
-
-/*
+    
   action {
-    action_group_id = azurerm_monitor_action_group.main.id
-  }*/
+    action_group_id = azurerm_monitor_action_group.actiongroup.id
+  }
 }  
-/*
-resource "azurerm_monitor_action_group" "main" {
-  name                = "example-actiongroup"
-  resource_group_name = azurerm_resource_group.main.name
-  short_name          = "exampleact"
 
-  webhook_receiver {
-    name        = "callmyapi"
-    service_uri = "http://example.com/alert"
+resource "azurerm_monitor_action_group" "actiongroup" {
+  name                = "actiongroupOpsTeams"
+  resource_group_name = module.resourcegroup.rg_name
+  short_name          = "OpsTeams"
+
+  email_receiver {
+    name          = "SendToOpsTeam"
+    email_address = "christian.tineo.528@gmail.com"
   }
 }
- */
