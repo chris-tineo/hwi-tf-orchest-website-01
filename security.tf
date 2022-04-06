@@ -37,3 +37,10 @@ resource "azurerm_key_vault_access_policy" "ctineo_permissions" {
     "Get", "Delete"
   ]
 }
+
+resource "azurerm_key_vault_secret" "github_token" {
+  name         = "github_token"
+  value        = var.github_token
+  key_vault_id = azurerm_key_vault.example.id
+}  
+  
