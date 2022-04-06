@@ -20,7 +20,7 @@ resource "azurerm_key_vault_access_policy" "srvprinc_permissions" {
   ]
 
   secret_permissions = [
-    "Get", "Update", "Create", "Delete"
+    "Get", "Delete"
   ]
 }    
     
@@ -34,6 +34,6 @@ resource "azurerm_key_vault_access_policy" "ctineo_permissions" {
   ]
 
   secret_permissions = [
-    "Get", "Update", "Create", "Delete"
+    "Get", "Delete"
   ]
 }
