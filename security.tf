@@ -1,5 +1,5 @@
 resource "azurerm_key_vault" "keyvault01" {
-  name                        = "keyvwebsprd01"
+  name                        = "keyvwebsdev01"
   location                    = "East US 2"
   resource_group_name         = module.resourcegroup.rg_name
   enabled_for_disk_encryption = false
