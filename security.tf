@@ -13,7 +13,7 @@ resource "azurerm_key_vault" "keyvault01" {
 resource "azurerm_key_vault_access_policy" "srvprinc_permissions" {
   key_vault_id = azurerm_key_vault.keyvault01.id
   tenant_id    = data.azurerm_client_config.current.tenant_id
-  object_id    = "0f6a62ba-a500-46d5-b1fc-a3a918fbfc3c"
+  object_id    = "a6a524c1-3010-4fa3-b8b8-40efe7c58ef6"
 
   key_permissions = [
     "Get", "Update", "Create", "Delete"
