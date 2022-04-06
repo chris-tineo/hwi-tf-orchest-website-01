@@ -8,7 +8,8 @@ resource "azurerm_key_vault" "keyvault01" {
   purge_protection_enabled    = false
 
   sku_name = "standard"
- 
+}
+  
 resource "azurerm_key_vault_access_policy" "srvprinc_permissions" {
   key_vault_id = azurerm_key_vault.keyvault01.id
   tenant_id    = data.azurerm_client_config.current.tenant_id
