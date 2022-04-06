@@ -1,4 +1,3 @@
-/*
 module "resourcegroup" {
   source  = "app.terraform.io/HelloWorldInc/resourcegroup/azurerm"
   version = "0.0.1"
@@ -15,4 +14,3 @@ module "staticsite" {
   rsrc_name     = "ststwebsprd01"
   rsrc_rg       =  module.resourcegroup.rg_name
 }
-*/
