@@ -52,7 +52,12 @@ resource "azurerm_application_insights_web_test" "webtest" {
   </Items>
 </WebTest>
 XML
-
+    
+  lifecycle {
+    ignore_changes = [
+      tags,
+    ]
+  }
 }  
   
 resource "azurerm_monitor_metric_alert" "metricalert" {
