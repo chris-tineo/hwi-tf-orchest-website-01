@@ -27,7 +27,7 @@ resource "azurerm_key_vault_access_policy" "srvprinc_permissions" {
 resource "azurerm_key_vault_access_policy" "ctineo_permissions" {
   key_vault_id = azurerm_key_vault.keyvault01.id
   tenant_id    = data.azurerm_client_config.current.tenant_id
-  object_id    = "4f6d35d3-98d3-4a7f-a293-885728cd1b03"
+  object_id    = "55379066-08e9-4fda-9b12-018b83392ba5"
 
   key_permissions = [
     "Get", "Update", "Create", "Delete"
@@ -40,7 +40,7 @@ resource "azurerm_key_vault_access_policy" "ctineo_permissions" {
     azurerm_key_vault_access_policy.srvprinc_permissions,
   ]
 }
-
+/*
 resource "azurerm_key_vault_secret" "github_token" {
   name         = "githubtoken"
   value        = var.github_token
@@ -50,3 +50,4 @@ resource "azurerm_key_vault_secret" "github_token" {
     azurerm_key_vault_access_policy.srvprinc_permissions,
   ]
 }
+*/
