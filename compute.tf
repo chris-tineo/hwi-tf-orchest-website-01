@@ -8,9 +8,10 @@ module "resourcegroup" {
 
 module "staticsite" {
   source  = "app.terraform.io/HelloWorldInc/staticsite/azurerm"
-  version = "0.0.2"
+  version = "0.0.3"
  
-  rsrc_location = "East US 2"
-  rsrc_name     = "ststwebsprd01"
-  rsrc_rg       =  module.resourcegroup.rg_name
+  rsrc_location   = "East US 2"
+  rsrc_name       = "ststwebsprd01"
+  rsrc_rg         =  module.resourcegroup.rg_name
+  rsrc_skugeneral = "Standard"
 }
