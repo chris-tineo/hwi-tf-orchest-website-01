@@ -1,3 +1,7 @@
+variable "github_token"" {
+  type = string
+}
+
 provider "azurerm" {
   features {}
 }
