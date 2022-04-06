@@ -6,7 +6,6 @@ module "resourcegroup" {
   rsrc_location = "East US 2" 
 }
 
-/*
 module "staticsite" {
   source  = "app.terraform.io/HelloWorldInc/staticsite/azurerm"
   version = "0.0.3"
@@ -16,4 +15,3 @@ module "staticsite" {
   rsrc_rg         =  module.resourcegroup.rg_name
   rsrc_skugeneral = "Standard"
 }
-*/
